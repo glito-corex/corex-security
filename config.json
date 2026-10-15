@@ -1,0 +1,152 @@
+[
+  { //ici on dit se qu'on veux en tête sa veux dire on regarde si c est perchance.org
+    //en lui passe le paramètre en tête 
+    //puis le oblig = obliger 
+    //après on lui dit perchance.org
+    //après on lui dit si on a une autre url sur perchance
+    //par exemple si on avais perchance.com bas on lui aurait donner
+    //mais la c est pas le qu'a 
+    //donc on lui dit le paramètre another = a false
+    //après on lui donne le paramètre extend
+    //le paramètre extend = l'extension
+    //si c est .com .fr ou .org
+    //la c est que .org et on lui donne le paramètre another 
+    //qui est = a false donc sa veux dire y'a que .org 
+    //qui est autoriser
+    //après on re part sur le obli (obliger)
+    //et on lui dit another plus bas
+    //et on lui donne une valeur non déffinie donc 
+    // un ? = je n'est pas d'autre faleur
+    //et on lui dit false donc sa veux dire que la si tu a autre que perchance tu refuse toute demande
+    //tu ne demande pas a l'user oe veux tu autoriser si en tête tu na pas perchance.org
+    //tu refuse 
+    //par contre si on voulait par exemple autoriser chatgpt.com on aurait
+    //pas mis un ? mais on aurait mis chagpt true
+    //mais la c est pas le qu'a ok
+    "en-tête": [
+      {
+        "obli": [
+          {
+            "perchance.org": {
+              "another": false
+            }
+          },
+          [
+            {
+              "extend": [
+                {
+                  ".": "org"
+                },
+                {
+                  "another": false
+                }
+              ]
+            }
+          ]
+        ],
+        "another": [
+          {
+            "?": false
+          }
+        ]
+      }
+    ],
+    //ici ned = number end 
+    //on lui donne la paramètre number end = a number false
+    //donc sa veux dire si l'url contient des number tu refuse
+    //après on lui donne la paramètre letter et on dit true
+    //sa veux dire si l'url contient des lettre on autorise
+    //après on lui donne le paramètre aster
+    //se paramètre la c est pour les _ - @ # & ^ =
+    //ceule le - du 6 est autoriser du coup la on vois qu'il est true
+    //et que tout le reste est false
+    "ned=": [
+      {
+        "number": false,
+        "letter": true,
+        "aster": [
+          {
+            "-": true,
+            "_": false,
+            "@": false,
+            "#": false,
+            "&": false,
+            "^": false,
+            "=": false
+          }
+        ]
+      }
+    ]
+  },
+  //ici on lui passe le paramètre /site 
+  //sa veux dire que c est ici les sites vérifier par corex institut 
+  //après on lui passe le paramètre verif 
+  //puis le paramètre yes et après on lui passe
+  //le début il dois commencer par https
+  //puis perchance.org
+  //puis on lui passe le paramètre end
+  //puis url-end
+  //et ici sa veux dire que par exemple si c'était corex-aria bas sa veux dire que tu l'ajoute après 
+  //le / après perchance.org/tu ajoute ici
+  //et si l'url qui fais la requêtes est = a celle dans le fichier on mais le flags
+  //verifié par corex institut 
+  //après on lui passe la paramètre another a yes 
+  //et on lui passe le paramètre * en gros sa veux dire que je n'est pas d'autre url-end 
+  //qui n'est pas vérif en gros si par exemple on dit a la place de corex-aria sa aurait
+  //été hackme bas la place de * on aurait mis yes puis on lui aurait passer le paramètre
+  //blocked puis url-end et après la fin de l'url mais la on en a pas 
+  //donc je lui dit avec * sa on a pas de url-end a bloquer de base
+  //puis la en bas on lui passe le paramètre http a verif on lui passe la paramètre 
+  //autorised puis le paramètre auto puis la valeur qui est = a false
+  //sa veux dire si un site qui fait une requêtes pour demander l'accès
+  //au fichier mais que c est un http = on refuse et on demande pas a l'user
+  //puis après on passe le parmaètre https a verif puis autorised puis le paramètre et la valeur
+  // est = a true sa veux dire si tu a un site qui fais une requêtes et que c est un https bas tu
+  //peux faire le reste 
+  //puis on lui passe le paramètre www. a verif et le paramètre autorised puis la valeur false
+  //sa veux dire que si l'url commence par www. = tu refuse 
+  {
+    "/site": {
+      "verif": {
+        "yes": [
+          {
+            "https": "perchance.org/",
+            "end": [
+              {
+                "url-end": {
+                  "ygv2vry6o9": true
+                }
+              }
+            ],
+            "another": [
+              {
+                "*": false
+              }
+            ]
+          }
+        ]
+      },
+      "http": [
+        {
+          "autorised": {
+            "auto": false
+          }
+        }
+      ],
+      "https": [
+        {
+          "autorised": {
+            "*": true
+          }
+        }
+      ],
+      "www.": [
+        {
+          "autorised": {
+            "auto": false
+          }
+        }
+      ]
+    }
+  }
+]
